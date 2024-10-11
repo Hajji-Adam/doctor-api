@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "9000:9000"
+    volumes:
+      - .:/var/www
+    environment:
+      - APP_ENV=production
+      - APP_KEY=base64:base64:jO+TN1F+qBdEMK1eanrlUdYIsSE/Udb6VE6YFVp/gzM=
+      - DB_CONNECTION=mysql
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=doctor
+      - DB_USERNAME=root
+      - DB_PASSWORD=
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: doctor
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 
+      MYSQL_ROOT_PASSWORD:
+    ports:
+      - "3306:3306"

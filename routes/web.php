@@ -15,3 +15,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/health', function () {
+    return response()->json(['status' => 'OK'], 200);
+});
